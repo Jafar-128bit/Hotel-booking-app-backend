@@ -83,7 +83,7 @@ const countByType = async (req, res, next) => {
         next(error);
     }
 };
-
+//Github Test
 module.exports = {
     createHotel,
     updateHotel,
