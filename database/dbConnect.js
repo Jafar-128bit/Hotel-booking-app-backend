@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 // username - datacenterMDB_01
-// password - Pk2H9g3x52pf62kl
+// password - aKAOqYqf6KPVBeRh
 
 const connection_url = process.env.MONGO_URL;
 const connectDatabase = (uri, callback) => {

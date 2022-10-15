@@ -1,4 +1,5 @@
 const Hotel = require('../database/hotelsSchema');
+const Room = require('../database/roomSchema');
 
 const createHotel = async (req, res, next) => {
     const newHotel = req.body;
@@ -83,7 +84,17 @@ const countByType = async (req, res, next) => {
         next(error);
     }
 };
-//Github Test
+const getHotelRooms = async (req,res,next) => {
+    try {
+        const hotel = await Hotel.findById(req.params.id);
+        const list = await Promise.all(hotel.rooms.map(room => {
+            return Room.findById(room);
+    }));
+        res.status(200).jsonp(list);
+    } catch (error) {
+        next(error);
+    }
+}
 module.exports = {
     createHotel,
     updateHotel,
@@ -91,5 +102,6 @@ module.exports = {
     getSingleHotel,
     getAllHotel,
     countByCity,
-    countByType
+    countByType,
+    getHotelRooms
 }
